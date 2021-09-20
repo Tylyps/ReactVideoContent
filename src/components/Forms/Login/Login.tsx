@@ -36,7 +36,6 @@ const LoginForm = (props: LoginFormProps) => {
         }}
         onSubmit={(val, { setErrors, setSubmitting }) => {
           signIn(val).catch( (e) => {
-            console.log(e)
             setErrors({error: "Wrong password or username"})
             setSubmitting(false);
           })
