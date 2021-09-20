@@ -1,0 +1,56 @@
+.customButton {
+  position: relative;
+  width: max-content;
+  border: none;
+  background: none;
+  margin: 10px;
+  cursor: pointer;
+  padding: 0;
+  background: inherit;
+  user-select: none;
+}
+
+.customButton:disabled {
+  opacity: 0.7;
+  cursor: auto;
+}
+
+.customButton .buttonBackground,
+.customButton .buttonBackgroundGlow {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  transition: 0.5s;
+  background:
+    linear-gradient(
+      45deg,
+      var(--first-border-color, var(--light-blue, #00ccff)),
+      #0000,
+      var(--second-border-color, var(--pink, #d400d4))
+    );
+  transform: skewX(1deg) skewY(1deg);
+}
+
+.customButton:not(:disabled):hover .buttonBackground {
+  inset: -2px;
+}
+
+.customButton:not(:disabled):hover .buttonBackgroundGlow {
+  inset: -2px;
+  filter: blur(10px);
+}
+
+.customButton > .contentContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+  background: var(--background-color);
+  background: inherit;
+  padding: 2px 5px;
+  z-index: 3;
+  border: 1px solid var(--background-color);
+}

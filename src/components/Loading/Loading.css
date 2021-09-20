@@ -1,0 +1,78 @@
+.loadingContainer {
+  --size: calc(var(--circle-size) * 0.7em);
+  margin: auto;
+  width: var(--size);
+  height: var(--size);
+  padding: 15px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+}
+
+.dotsContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  animation: Rotating 5s linear infinite;
+}
+
+.dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: aqua;
+
+  border-radius: 50%;
+  display: flex;
+  top: calc(50% - 5px);
+  left: calc(50% - 5px);
+  --angle: 270;
+  --dangle: calc(360 / var(--dots-count));
+  --angle-to-rotate: calc(var(--angle) + var(--dangle) * var(--i));
+  transform: rotate(calc(var(--angle-to-rotate) * 1deg)) translate(calc(var(--size) / 1.6)) rotate(calc(var(--angle-to-rotate) * -1deg));
+}
+
+.dot span {
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: 50%;
+  animation: Scaling 3s linear infinite;
+  position: absolute;
+  animation-delay: calc(var(--i) * 0.375s);
+  --default-size: 1;
+}
+
+.dot span:nth-child(2) {
+  --default-size: 1.5;
+  transform: scale(1.5);
+  filter: blur(4px);
+  opacity: 0.7;
+}
+
+.dot span:nth-child(1) {
+  filter: blur(2px);
+}
+
+
+@keyframes Rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes Scaling {
+  0%, 100% {
+    transform: scale(var(--default-size));
+  }
+  50% {
+    transform: scale(calc(var(--default-size) * 1.5));
+  }
+}

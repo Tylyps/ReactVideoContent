@@ -1,0 +1,78 @@
+.mediaContainer {
+  --media-container-size: 400px;
+  --media-image-size: 325px;
+  background-color: var(--background-color);
+  position: relative;
+  width: var(--media-container-size);
+  padding: 10px;
+  overflow: auto;
+  max-width: 100%;
+  height: calc(var(--media-container-size) * 0.5625);
+  overflow: unset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .mediaContainer {
+    --media-container-size: 85vw;
+    --media-image-size: 70vw;
+  }
+}
+
+.mediaContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: inherit;
+  position: relative;
+}
+
+.mediaContent img {
+  width: var(--media-image-size);
+  height: calc(var(--media-image-size) * 0.5625);
+}
+
+.mediaTitle {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  margin: auto;
+}
+
+.hiddenDescription {
+  opacity: 0;
+  position: absolute;
+  transition: 400ms;
+  top: 90%;
+  background: inherit;
+  height: max-content;
+  padding: 5px;
+  border: 1px solid white;
+  border-top: none;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mediaContainer:hover {
+  overflow: visible;
+  cursor: pointer;
+}
+
+.mediaContainer:hover .mediaTitle {
+  white-space: normal;
+  overflow: visible;
+}
+
+.mediaContainer:hover .hiddenDescription {
+  opacity: 1;
+  top: 105%;
+  pointer-events: all;
+}

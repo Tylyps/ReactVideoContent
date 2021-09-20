@@ -1,0 +1,15 @@
+.homeContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+@media only screen and (max-width: 900px) {
+  .homeContainer {
+    flex-direction: column;
+  }
+}
+
+.endMessage {
+  text-align: center;
+}

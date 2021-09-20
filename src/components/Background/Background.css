@@ -1,0 +1,70 @@
+.mainContainer {
+  background: linear-gradient(135deg, #282c34, #22314d);
+  position: fixed;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+
+.boxContainer {
+  height: 100%;
+  width: 100%;
+}
+
+.colorBox {
+  position: absolute;
+  width: 45vw;
+  height: 45vh;
+  opacity: 0.7;
+  filter: blur(50px);
+}
+
+.colorBox.first {
+  background-color: var(--box-background-color, #61dafb);
+  top: -10vh;
+  left: -45vw;
+  animation: MovingOnX 30s linear infinite;
+}
+
+.colorBox.second {
+  background-color: var(--box-background-color, #ff359b);
+  top: 75vh;
+  left: 85vw;
+  animation: Rotating 30s linear infinite;
+  height: 45vw;
+}
+
+.colorBox.third {
+  background-color: var(--box-background-color, #195ddb);
+  top: 75vh;
+  left: -45vw;
+  animation: MovingOnX 30s linear infinite reverse;
+  animation-delay: 5s;
+  height: 45vw;
+}
+
+.colorBox.fourth {
+  background-color: var(--box-background-color, #b30d36);
+  top: -25vh;
+  left: -20vw;
+  animation: Rotating 30s linear infinite reverse;
+}
+
+
+@keyframes MovingOnX {
+  from {
+    transform: translateX(0vw);
+  }
+  to {
+    transform: translateX(145vw);
+  }
+}
+
+@keyframes Rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

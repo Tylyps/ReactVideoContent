@@ -1,0 +1,32 @@
+.customBorder {
+  position: relative;
+  width: max-content;
+  border: none;
+  margin: 10px;
+  padding: 0;
+  background: inherit;
+}
+
+.customBorder .border,
+.customBorder .borderGlow {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  transition: 0.5s;
+  background: linear-gradient(45deg, var(--left-border-color, #00ccff), #0000, var(--right-border-color, #d400d4));
+  transform: skewX(-5deg) skewY(-2deg);
+}
+
+
+.customBorder .borderGlow {
+  filter: blur(10px);
+}
+
+.customBorder .contentContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: inherit;
+  border: .1px solid var(--background-color);
+}

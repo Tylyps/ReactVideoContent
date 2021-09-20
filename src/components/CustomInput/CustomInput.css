@@ -1,0 +1,32 @@
+.inputBox {
+  display: flex;
+  position: relative;
+}
+
+.inputBox label {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0px 3px;
+  transition: 1s;
+  bottom: 0px;
+  left: 0;
+  z-index: 1;
+}
+
+input:not([value=""]) + label,
+input[type="password"]:focus + label,
+input[type="text"]:focus + label {
+  bottom: 75%;
+  font-size: 0.8rem;
+  left: 0;
+  background-color: var(--background-color);
+}
+
+input[type="text"], input[type="password"] {
+  background-color: var(--background-color);
+  border: none;
+  color: white;
+}

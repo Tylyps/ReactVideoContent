@@ -1,0 +1,84 @@
+.navbar {
+  height: 50px;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  z-index: 5;
+}
+
+a.active {
+  text-shadow: 0px 0px 8px var(--light-blue);
+}
+
+.profileMenu {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  padding-right: 5px;
+  user-select: none;
+}
+
+.profileMenu::after {
+  --arrow-size: 5px;
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 100%;
+  border-top: var(--arrow-size) solid white;
+  border-left: var(--arrow-size) solid transparent;
+  border-right: var(--arrow-size) solid transparent;
+  transition: 300ms;
+}
+
+.profileMenu.active::after {
+  transform: rotateX(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5em);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-30px);
+  transition: 200ms;
+  z-index: 5;
+}
+
+.profileMenu.active .dropdownMenu {
+  opacity: 1;
+  transform: translateY(0px);
+  pointer-events: all;
+}
+
+.dropdownMenu ul {
+  margin: 0;
+  padding: 0;
+  background: var(--background-color);
+}
+
+.dropdownMenu ul li {
+  list-style: none;
+  padding: 10px;
+}
+
+.dropdownMenu ul li:hover {
+  background: #fff4;
+  cursor: pointer;
+}
+
+.logoutModal {
+  background: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  flex: 1;
+}
+
+.logoutModal > div {
+  background: inherit;
+}
