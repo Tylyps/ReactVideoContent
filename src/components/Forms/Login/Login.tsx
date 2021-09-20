@@ -1,6 +1,5 @@
 import { Formik } from 'formik';
 import React, { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
 import { SignInModel } from '../../../models/signIn';
 import { useStore } from '../../../stores/store';
 import CustomButton from '../../CustomButton/CustomButton';
@@ -14,7 +13,6 @@ interface LoginFormProps {
 
 const LoginForm = (props: LoginFormProps) => {
   const { toggleView } = props;
-  const history = useHistory();
   const { userStore } = useStore();
 
   const signIn = useCallback((loginData: SignInModel) => {
@@ -32,15 +30,15 @@ const LoginForm = (props: LoginFormProps) => {
       </h2>
       <Formik
         initialValues={{
-          Username: "test@bsgroup.eu",
-          Password: "Test12!@",
+          Username: "",
+          Password: "",
           error: "",
         }}
-        onSubmit={(val, { setErrors }) => {
-          signIn(val).then(() => {
-
-          }, (e) => {
-            setErrors({error: e.message})
+        onSubmit={(val, { setErrors, setSubmitting }) => {
+          signIn(val).catch( (e) => {
+            console.log(e)
+            setErrors({error: "Wrong password or username"})
+            setSubmitting(false);
           })
         }}
       >
@@ -58,6 +56,9 @@ const LoginForm = (props: LoginFormProps) => {
               label="Password"
               hasError={!!errors?.error}
             />
+            {!!errors?.error && <p className="errorMessage">
+              {errors?.error}
+            </p>}
           </div>
           <h4>Don't have account? <span
             className="customLink"

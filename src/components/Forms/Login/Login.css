@@ -1,4 +1,10 @@
 .loginFormContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.loginFormContainer .errorMessage {
+  color: red;
+  font-weight: bold;
 }
